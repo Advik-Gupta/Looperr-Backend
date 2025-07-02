@@ -41,6 +41,24 @@ This is the **backend service** that powers Looperr, built with **Express.js** a
 
 ---
 
+<h1>👥 Team</h1>
+
+<h3>Advik Gupta</h3> 
+👨‍💻 Lead Developer <br>
+📧 advikgupta6901@gmail.com <br>
+🌐 <a href="https://www.linkedin.com/in/advik-guptaa/">LinkedIn</a>
+
+---
+<!---
+<h1>📚 Resources</h1>
+
+This project is based on the excellent <a href="https://looperr-frontend.vercel.app/">next-pwa-template</a> by mvllow.
+
+Feel free to explore the original repo for additional customisations and advanced features.
+
+---
+--->
+
 ## 📦 Installation
 
 ```bash
