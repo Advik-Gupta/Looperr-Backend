@@ -13,12 +13,12 @@ const requestSchema = new mongoose.Schema({
     enum: ["open", "accepted", "completed", "cancelled", "expired"],
     default: "open",
   },
-  //   requesterId: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "User",
-  //     required: true,
-  //   },
-  //   fulfillerId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  requesterId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  fulfillerId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   createdAt: { type: Date, default: Date.now },
   acceptedAt: { type: Date },
   fulfilledAt: { type: Date },

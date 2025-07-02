@@ -1,0 +1,103 @@
+import bcrypt from "bcryptjs";
+
+export const usersSampleData = [
+  {
+    _id: "64a1f27c1c3b7f001f3a0001",
+    name: "Advik Gupta",
+    email: "advik.gupta@example.com",
+    password: bcrypt.hashSync("123456", 10),
+    phone: "9876543210",
+    collegeId: "22BCE1001",
+    collegeIdCardImage: "https://example.com/uploads/collegeId1.jpg",
+    profileImage: "https://example.com/uploads/profile1.jpg",
+    role: "user",
+    currentHostel: "A Block",
+    location: {
+      lat: 12.9716,
+      lng: 79.1588,
+      description: "Main Gate",
+    },
+    rating: 4.7,
+    totalRequestsMade: 3,
+    totalRequestsFulfilled: 5,
+    joinedAt: "2023-11-10T08:30:00Z",
+  },
+  {
+    _id: "64a1f27c1c3b7f001f3a0002",
+    name: "Megha Reddy",
+    email: "megha.reddy@example.com",
+    password: bcrypt.hashSync("123456", 10),
+    phone: "9876512345",
+    collegeId: "22BCE1020",
+    collegeIdCardImage: "",
+    profileImage: "https://example.com/uploads/profile2.jpg",
+    role: "user",
+    currentHostel: "D Block",
+    location: {
+      lat: 12.9722,
+      lng: 79.1599,
+      description: "D Block Entrance",
+    },
+    rating: 5.0,
+    totalRequestsMade: 1,
+    totalRequestsFulfilled: 8,
+    joinedAt: "2023-12-01T10:45:00Z",
+  },
+];
+
+export const requestsSampleData = [
+  {
+    _id: "64b2e8121c3b7f001f3a1001",
+    title: "Pick up food from Main Gate",
+    description:
+      "Swiggy guy is waiting at the main gate. Please collect it and bring it to A Block room 203.",
+    type: "pickup",
+    status: "open",
+    requesterId: "64a1f27c1c3b7f001f3a0001",
+    fulfillerId: null,
+    createdAt: "2025-07-01T13:00:00Z",
+    acceptedAt: null,
+    fulfilledAt: null,
+    fromLocation: {
+      lat: 12.9716,
+      lng: 79.1588,
+      description: "Main Gate",
+    },
+    toLocation: {
+      lat: 12.972,
+      lng: 79.159,
+      description: "A Block, Room 203",
+    },
+    reward: 15,
+    isUrgent: true,
+    images: [],
+    tags: ["food", "delivery"],
+  },
+  {
+    _id: "64b2e8121c3b7f001f3a1002",
+    title: "Buy soap and toothpaste from campus store",
+    description:
+      "Need a Medimix soap and Colgate toothpaste from the general store near D Block.",
+    type: "buy",
+    status: "accepted",
+    requesterId: "64a1f27c1c3b7f001f3a0002",
+    fulfillerId: "64a1f27c1c3b7f001f3a0001",
+    createdAt: "2025-07-01T12:00:00Z",
+    acceptedAt: "2025-07-01T12:10:00Z",
+    fulfilledAt: null,
+    fromLocation: {
+      lat: 12.9725,
+      lng: 79.1595,
+      description: "Campus General Store",
+    },
+    toLocation: {
+      lat: 12.9722,
+      lng: 79.1599,
+      description: "D Block, Room 307",
+    },
+    reward: 10,
+    isUrgent: false,
+    images: ["https://example.com/uploads/soap.jpg"],
+    tags: ["toiletries", "shopping"],
+  },
+];
