@@ -30,6 +30,8 @@ This is the **backend service** that powers Looperr, built with **Express.js** a
 - 🛠️ `.env` configuration support
 - 📁 Modular folder structure for routes and controllers
 
+- Checkout Looperr Frontend here - https://github.com/Advik-Gupta/Looperr-Backend
+
 ---
 
 ## 🚀 Features
