@@ -13,11 +13,26 @@ export const getRequests = async (req, res) => {
         id: request._id,
         title: request.title,
         description: request.description,
+        requesterId: request.requesterId,
         type: request.type,
         status: request.status,
         createdAt: request.createdAt,
-        fromLocation: request.fromLocation,
-        toLocation: request.toLocation,
+        fromLocation: {
+          locationReferenceId: request.fromLocation.locationReferenceId,
+          locationName: request.fromLocation.locationName,
+        },
+        toLocation: {
+          locationReferenceId: request.toLocation.locationReferenceId,
+          locationName: request.toLocation.locationName,
+        },
+        tags: request.tags.map((tag) => ({
+          tagId: tag.tagId,
+          tagName: tag.tagName,
+        })),
+        price: request.price,
+        isUrgent: request.isUrgent,
+        image: request.image,
+        bidLimit: request.bidLimit,
       })),
     });
   } catch (error) {
@@ -35,25 +50,39 @@ export const getRequests = async (req, res) => {
 
 export const createRequest = async (req, res) => {
   console.log("Creating a new request");
-  const name = req.body.name;
+  console.log("Request data:", req.body);
+
+  const request = req.body;
 
   const newRequest = new Request({
-    title: "Sample Request",
-    description: "This is a sample request description.",
-    type: "custom",
+    title: request.title,
+    description: request.description,
+    type: request.type,
+    requesterId: "64a1f27c1c3b7f001f3a0001",
+    status: "open",
     fromLocation: {
-      lat: 0,
-      lng: 0,
-      description: "Sample from location",
+      locationReferenceId: request.fromLocation.locationReferenceId,
+      locationName: request.fromLocation.locationName,
     },
     toLocation: {
-      lat: 0,
-      lng: 0,
-      description: "Sample to location",
+      locationReferenceId: request.toLocation.locationReferenceId,
+      locationName: request.toLocation.locationName,
     },
+    price: request.price || 0,
+    isUrgent: request.isUrgent || false,
+    image: request.image || "",
+    tags: request.tags || [],
+    bidLimit: request.bidLimit || 0,
   });
 
   await newRequest.save();
+
+  const io = req.app.get("io");
+
+  setTimeout(async () => {
+    const allRequests = await Request.find().sort({ createdAt: -1 }).lean();
+    io.emit("requestsUpdated", allRequests);
+  }, 100);
 
   res.status(200).json({
     message: "Request created successfully",

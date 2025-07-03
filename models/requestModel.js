@@ -23,19 +23,18 @@ const requestSchema = new mongoose.Schema({
   acceptedAt: { type: Date },
   fulfilledAt: { type: Date },
   fromLocation: {
-    lat: { type: Number, required: true },
-    lng: { type: Number, required: true },
-    description: { type: String, required: true },
+    locationReferenceId: { type: String, required: true },
+    locationName: { type: String, required: true },
   },
   toLocation: {
-    lat: { type: Number, required: true },
-    lng: { type: Number, required: true },
-    description: { type: String, required: true },
+    locationReferenceId: { type: String, required: true },
+    locationName: { type: String, required: true },
   },
-  reward: { type: Number, default: 0 },
+  price: { type: Number, default: 0 },
   isUrgent: { type: Boolean, default: false },
-  images: [{ type: String }],
+  image: { type: String },
   tags: [{ type: String }],
+  bidLimit: { type: Number, default: 0 },
 });
 
 const Request = mongoose.model("Request", requestSchema);
