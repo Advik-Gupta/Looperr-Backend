@@ -4,11 +4,7 @@
 # Generated via Node.js
 node_modules
 # Generated via dotenv
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+*.env
 
 # Generated via next-pwa
 **/public/workbox**
